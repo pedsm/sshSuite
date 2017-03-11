@@ -21,7 +21,7 @@ console.log('Server running on port ' + port);
 
 function sshExec(command, callback)
 {
-    exec('ssh root@ratemysesh.me ' + command, (err,out)=>
+    exec('ssh root@rishi.doubletrouble.co ' + command, (err,out)=>
     {
         if (err)
             throw err
@@ -29,4 +29,4 @@ function sshExec(command, callback)
     })
 }
 
-sshExec('cd rmSesh;ls',console.log)
+sshExec('ls',console.log)
