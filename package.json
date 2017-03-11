@@ -21,6 +21,7 @@
   "homepage": "https://github.com/pedsm/sshSuite#readme",
   "dependencies": {
     "electron": "^1.6.2",
+    "chart.js": "^2.5.0",
     "exec": "^0.2.1",
     "express": "^4.15.2",
     "gritty": "^1.3.0",
