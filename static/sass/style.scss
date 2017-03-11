@@ -12,7 +12,7 @@ $darkGrey:#555753;
 $anotherSalmon:#ef2929;
 $niceGreen:#8ae234;
 $yellow:#fce94f;
-$cyan:#729fcf;
+$cyan2:#729fcf;
 
 *{
     font-family:monospace;
@@ -24,7 +24,6 @@ body{
 #browser {
     -webkit-app-region: drag;
     width: 20%;
-    max-width:200px;
     float: left;
     height: 100vh;
     background-color: $grey;

@@ -51,6 +51,10 @@ function getPath()
         return document.getElementById('iframe').contentWindow.emulator.terminal.title.split(":")[1]
     }
 }
+function changeDir(path) 
+{ 
+    document.getElementById('iframe').contentWindow.emulator.terminal.send('cd ' +path + "\r")
+}
 function drawLs(path)
 {
     //path = document.getElementById('iframe').contentWindow.emulator.terminal.title.split(":")[1]
@@ -58,10 +62,13 @@ function drawLs(path)
     sshExec('ls -g ' + '\''+path+'\'',(res)=>
             {
                 document.getElementById('browser').innerHTML = "";
+                var html = '<div class="item" onclick="changeDir(\'..\')">';
+                html += '<i class="material-icons">folder</i>';
+                html += '<span>..</span>';
+                html += '</div>'
                 for(var i = 1; i < res.split("\n").length-1;i++)
                 {
-                    var html = '';
-                    html = '<div class="item">';
+                    html += '<div onclick="changeDir(\''+res.split("\n")[i].split(" ")[res.split("\n")[i].split(" ").length -1]+'\')" class="item">';
                     if ( res.split("\n")[i].charAt(0) == 'd')
                     {
                         html += '<i class="material-icons">folder</i>';
@@ -71,8 +78,8 @@ function drawLs(path)
                     console.log(res.split("\n")[i].split(" ")[res.split("\n")[i].split(" ").length -1])
                         html += '<span>'+ res.split("\n")[i].split(" ")[res.split("\n")[i].split(" ").length -1] + '</span>';
                     html += '</div>'
-                        document.getElementById('browser').innerHTML += html;
                 }
+                document.getElementById('browser').innerHTML = html;
 
             })
 }
@@ -99,7 +106,7 @@ startLs();
 //event Handlers
 var sleep = require('sleep');
 //document.getElementById('iframe').onload =setHandlers();
-setTimeout(setHandlers,2000);
+setTimeout(setHandlers,1000);
 function setHandlers()
 {
     console.log("yoOooo")

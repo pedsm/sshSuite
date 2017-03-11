@@ -8,7 +8,6 @@ body {
 #browser {
   -webkit-app-region: drag;
   width: 20%;
-  max-width: 200px;
   float: left;
   height: 100vh;
   background-color: #2e3436; }
@@ -16,7 +15,7 @@ body {
     padding-left: 10px;
     color: white;
     padding: 10px 0px;
-    background-color: #729fcf;
+    background-color: #3465a4;
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
