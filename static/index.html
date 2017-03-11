@@ -4,11 +4,18 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="/gritty/css/style.css">
         <script src="js/main.js"></script>
+        <script src="/gritty/gritty.js"></script>
         <title>sshSuite</title>
     </head>
     <body>
-        Terminal is gonna go here
-
+        <div class="gritty"></div>
+        <script>
+            var emulator = gritty('.gritty', function() {
+                console.log('Console Ready')
+            });
+            emulator.terminal.send('ssh root@ratemysesh.me\r')
+        </script>
     </body>
 </html>
