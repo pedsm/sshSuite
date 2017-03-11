@@ -23,6 +23,7 @@ body{
 }
 #browser {
     width: 20%;
+    max-width:200px;
     float: left;
     height: 100vh;
     background-color: $grey;
@@ -39,6 +40,11 @@ body{
         i{
             padding-left:10px;
         }
+        span{
+            bottom: 6px;
+            font-size: 12px;
+            position: relative;
+        }
     }
 }
 .gritty{
@@ -52,8 +58,6 @@ iframe{
     margin-left:20%;
     width:80%;
     height:100vh;
-    oveflow:hidden;
     display:block;
-    scrolling:no;
-    frameborder:0;
+    oveflow:hidden;
 }
