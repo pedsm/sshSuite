@@ -8,30 +8,83 @@
         <!-- <link rel="stylesheet" href="../node_modules/gritty/css/style.css"> -->
         <script src="../node_modules/gritty/dist/gritty.js"></script>
         <script>
-        // You can also require other files to run in this process
-        //require('./renderer.js')
-        const gritty = require('gritty'),
-              http = require('http'),
-              express = require('express'),
-              io = require('socket.io'),
-              exec = require('child_process').exec,
-              termApp = express(),
-              server = http.createServer(termApp),
-              socket = io.listen(server),
-              port = 3000,
-              ip = '0.0.0.0'
+// You can also require other files to run in this process
+//require('./renderer.js')
+const gritty = require('gritty'),
+      http = require('http'),
+      express = require('express'),
+      io = require('socket.io'),
+      exec = require('child_process').exec,
+      termApp = express(),
+      server = http.createServer(termApp),
+      socket = io.listen(server),
+      port = 3000,
+      ip = '0.0.0.0'
 
-        termApp.use(gritty())
-            termApp.use(express.static('static'))
-            termApp.use(express.static(__dirname));
+termApp.use(gritty())
+    termApp.use(express.static('static'))
+    termApp.use(express.static(__dirname));
 
-            gritty.listen(socket);
-            server.listen(port, ip);
+    gritty.listen(socket);
+    server.listen(port, ip);
 
+function sshExec(command, callback)
+{
+    exec('ssh root@ratemysesh.me ' + command, (err,out)=>
+            {
+                if (err)
+                    throw err
+                        //console.log('calling at '+out)
+                        callback(out)
+            })
+}
+function getPath()
+{
+    if(document.getElementById('iframe').contentWindow.emulator.terminal.title.split(":")[1] == undefined)
+    {
+        console.log('recurse')
+        return getPath()
+    }
+    else
+    {
+        console.log( document.getElementById('iframe').contentWindow.emulator.terminal.title.split(":")[1] )
+        return document.getElementById('iframe').contentWindow.emulator.terminal.title.split(":")[1]
+    }
+}
+function drawLs(path)
+{
+    //path = document.getElementById('iframe').contentWindow.emulator.terminal.title.split(":")[1]
+    //console.log(path)
+    sshExec('ls -g ' + '\''+path+'\'',(res)=>
+            {
+                document.getElementById('browser').innerHTML = "";
+                for(var i = 1; i < res.split("\n").length-1;i++)
+                {
+                    var html = '';
+                    html = '<div class="item">';
+                    if ( res.split("\n")[i].charAt(0) == 'd')
+                    {
+                        html += '<i class="material-icons">folder</i>';
+                    } else {
+                        html += '<i class="material-icons">insert_drive_file</i>';
+                    }
+                    console.log(res.split("\n")[i].split(" ")[res.split("\n")[i].split(" ").length -1])
+                        html += '<span>'+ res.split("\n")[i].split(" ")[res.split("\n")[i].split(" ").length -1] + '</span>';
+                    html += '</div>'
+                        document.getElementById('browser').innerHTML += html;
+                }
+
+            })
+}
+function startLs()
+{
+    drawLs('')
+}
+startLs();
         </script>
     </head>
     <body>
-        <div id="browser">
+        <div id="browser" onload="startLs">
             <!-- loop this -->
             <div class="item">
                 <i class="material-icons">insert_drive_file</i><span>File</span>
@@ -41,8 +94,21 @@
             </div>
             <!-- end loop -->
         </div>
-        <iframe id="iframe" frameborder="no" scrolling="yes" width="90%" height="100%" src="http://localhost:3000" seamless ></iframe>
+        <iframe id="iframe" frameborder="no" scrolling="yes" width="90%" height="100%" src="http://localhost:3000" seamless  ></iframe>
         <script>
+//event Handlers
+var sleep = require('sleep');
+//document.getElementById('iframe').onload =setHandlers();
+setTimeout(setHandlers,2000);
+function setHandlers()
+{
+    console.log("yoOooo")
+        document.getElementById('iframe').contentWindow.emulator.terminal.on('title', (title)=>
+                {
+                    console.log(title);
+                    drawLs(getPath())
+                })
+}
         </script>
     </body>
 </html>
