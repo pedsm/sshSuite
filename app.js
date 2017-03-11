@@ -4,15 +4,15 @@ const gritty = require('gritty/legacy'),
       express = require('express'),
       io = require('socket.io'),
       exec = require('child_process').exec,
-      app = express(),
-      server = http.createServer(app),
+      termApp = express(),
+      server = http.createServer(termApp),
       socket = io.listen(server),
       port = 3000,
       ip = '0.0.0.0'
  
-app.use(gritty())
-app.use(express.static('static'))
-app.use(express.static(__dirname));
+termApp.use(gritty())
+termApp.use(express.static('static'))
+termApp.use(express.static(__dirname));
  
 gritty.listen(socket);
 server.listen(port, ip);

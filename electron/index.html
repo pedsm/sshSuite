@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello World!</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="../static/css/style.css">
+        <!-- <link rel="stylesheet" href="../node_modules/gritty/css/style.css"> -->
+        <script src="../node_modules/gritty/dist/gritty.js"></script>
+        <script>
+        // You can also require other files to run in this process
+        //require('./renderer.js')
+        const gritty = require('gritty'),
+              http = require('http'),
+              express = require('express'),
+              io = require('socket.io'),
+              exec = require('child_process').exec,
+              termApp = express(),
+              server = http.createServer(termApp),
+              socket = io.listen(server),
+              port = 3000,
+              ip = '0.0.0.0'
+
+        termApp.use(gritty())
+            termApp.use(express.static('static'))
+            termApp.use(express.static(__dirname));
+
+            gritty.listen(socket);
+            server.listen(port, ip);
+
+        </script>
+    </head>
+    <body>
+        <div id="browser">
+            <div class="item">
+                <i class="material-icons">folder</i>Name of the thing
+            </div>
+        </div>
+        <iframe frameborder="no" scrolling="yes" width="90%" height="100%" src="http://localhost:3000" seamless ></iframe>
+    </body>
+</html>

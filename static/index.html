@@ -5,18 +5,18 @@
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="/gritty/css/style.css">
-        <script src="js/main.js"></script>
+        <!-- <script src="js/main.js"></script> -->
         <script src="/gritty/gritty.js"></script>
         <title>sshSuite</title>
     </head>
     <body>
-        <div id=browser></div>
         <div class="gritty" id=terminal></div>
         <script>
             var emulator = gritty('.gritty', function() {
                 console.log('Console Ready')
             });
             emulator.terminal.send('ssh root@ratemysesh.me\r')
+            emulator.term.fit()
         </script>
     </body>
 </html>
