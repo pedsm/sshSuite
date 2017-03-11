@@ -3,14 +3,15 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="/gritty/css/style.css">
         <script src="js/main.js"></script>
         <script src="/gritty/gritty.js"></script>
         <title>sshSuite</title>
     </head>
     <body>
-        <div class="gritty"></div>
+        <div id=browser></div>
+        <div class="gritty" id=terminal></div>
         <script>
             var terminal = gritty('.gritty', function() {
                 console.log('console ready')
