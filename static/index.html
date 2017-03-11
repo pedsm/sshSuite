@@ -13,10 +13,10 @@
         <div id=browser></div>
         <div class="gritty" id=terminal></div>
         <script>
-            var terminal = gritty('.gritty', function() {
-                console.log('console ready')
+            var emulator = gritty('.gritty', function() {
+                console.log('Console Ready')
             });
-            terminal.terminal.send('ssh root@ratemysesh.me\r')
+            emulator.terminal.send('ssh root@ratemysesh.me\r')
         </script>
     </body>
 </html>
