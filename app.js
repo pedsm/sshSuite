@@ -1,7 +1,5 @@
 //This is our entry point
 const gritty = require('gritty/legacy'),
-<<<<<<< HEAD
-<<<<<<< HEAD
       http = require('http'),
       express = require('express'),
       io = require('socket.io'),
@@ -16,27 +14,6 @@ termApp.use(gritty())
 termApp.use(express.static('static'))
 termApp.use(express.static(__dirname));
  
-=======
-=======
->>>>>>> adc9a9cdf16f36fafc80e2fa6e24355f9cfa12d5
-    http = require('http'),
-    express = require('express'),
-    io = require('socket.io'),
-    exec = require('child_process').exec,
-    app = express(),
-    server = http.createServer(app),
-    socket = io.listen(server),
-    port = 3000,
-    ip = '0.0.0.0'
-
-app.use(gritty())
-app.use(express.static('static'))
-app.use(express.static(__dirname));
-
-<<<<<<< HEAD
->>>>>>> e399e74a91857663b4be1a818a146c4a92673eb4
-=======
->>>>>>> adc9a9cdf16f36fafc80e2fa6e24355f9cfa12d5
 gritty.listen(socket);
 server.listen(port, ip);
 console.log('Server running on port ' + port);
@@ -51,10 +28,13 @@ function sshExec(command, callback)
         })
 }
 
-setInterval(()=>{sshExec('cat /proc/meminfo',cutMem)},1000)
+setInterval(()=>{sshExec('cat /proc/meminfo',cutMem)},10000)
+setInterval(()=>{sshExec('ps -eo pcpu',cpuAvg)},1000)
+
 function cutMem(input)
 {
     var res = input.split("\n", 3)
+    res.map((ob)=>parseInt(ob))
     newRes = []
     res.forEach((line,index)=>
         {
@@ -65,5 +45,22 @@ function cutMem(input)
     var memUsed = memTotal - memFree;
     console.log("Memory used is " + memUsed);
     console.log("Memory free is " + memFree);
+
+}
+
+function cpuAvg(input)
+{
+    var counter = 0;
+    var res = input.split("\n")
+    res[0] = 0;
+    console.log("length of array is " + res.length);
+
+
+    for (var x = 0; x < res.length-1; x++) {
+        res[x] = parseFloat(res[x]);
+        counter = counter + res[x];
+    }
+
+        console.log(counter);
 
 }
