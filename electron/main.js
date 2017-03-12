@@ -12,6 +12,8 @@ const gritty = require('gritty'),
     ip = '0.0.0.0',
     config = require('./config.json')
 var toggleGraphs = false;
+var user = window.location.search.split("&")[0].split("=")[1]
+var host = window.location.search.split("&")[1].split("=")[1]
 
 termApp.use(gritty())
 termApp.use(express.static('static'))
@@ -30,7 +32,7 @@ function cutMem(input)
 {
     var res = input.split("\n", 3)
     res.map((ob)=>parseInt(ob))
-    console.log(res)
+    // console.log(res)
     newRes = []
     res.forEach((line,index)=>
         {
@@ -38,10 +40,10 @@ function cutMem(input)
         })
     var memTotal = newRes[0][newRes[0].length-2];
     memFree = newRes[1][newRes[1].length-2];
-    console.log(memFree)
+    // console.log(memFree)
     memUsed = memTotal - memFree;
-    console.log("Memory used is " + memUsed);
-    console.log("Memory free is " + memFree);
+    // console.log("Memory used is " + memUsed);
+    // console.log("Memory free is " + memFree);
 }
 var cCpu = 0;
 function cpuAvg(input)
@@ -54,7 +56,7 @@ function cpuAvg(input)
         res[x] = parseFloat(res[x]);
         counter = counter + res[x];
     }
-    console.log(counter)
+    // console.log(counter)
     cCpu = counter;
 }
 
@@ -77,7 +79,7 @@ function toggle()
 
 function sshExec(command, callback)
 {
-    exec('ssh root@ratemysesh.me ' + command, (err,out)=>
+    exec('ssh '+user+'@'+host+' ' + command, (err,out)=>
         {
             if (err)
                 throw err
@@ -167,7 +169,7 @@ function makeCpuChart(array){
     });
     return lineChart;
 }
-function plsWork(){ 
+function plsWork(){
     myArray = [0,1,2,3,4,5,6,7,8,9]
     var ctx = document.getElementById("lineGraph").getContext('2d');
     var line = new Chart(ctx, {
