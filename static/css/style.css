@@ -59,7 +59,8 @@ body {
   #footer center i {
     -webkit-transition-duration: 0.2s; }
   #footer .container {
-    width: 200px; }
+    width: 200px;
+    float: left; }
 
 iframe {
   margin-left: 20%;

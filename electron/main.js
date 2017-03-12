@@ -40,7 +40,7 @@ function cutMem(input)
     console.log("Memory used is " + memUsed);
     console.log("Memory free is " + memFree);
 }
-
+var cCpu = 0;
 function cpuAvg(input)
 {
     var counter = 0;
@@ -52,6 +52,7 @@ function cpuAvg(input)
         counter = counter + res[x];
     }
     console.log(counter)
+    cCpu = counter;
 }
 
 function toggle()
@@ -165,15 +166,16 @@ function makeCpuChart(array){
     return lineChart;
 }
 function plsWork(){ 
-    myArray = [50,60,10,90,4]
+    myArray = [0,1,2,3,4,5,6,7,8,9]
     var ctx = document.getElementById("lineGraph").getContext('2d');
     var line = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: [1,2,3,4,5],
+            labels: [0,1,2,3,4,5,6,7,8,9],
             datasets: [{
+                label: "Cpu Utilisation",
                 backgroundColor: [
-                    "#3498db",
+                    "#3498db"
                 ],
                 data: myArray
             }]
