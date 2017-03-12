@@ -22,7 +22,7 @@
 		#box{
 			width: 100%;
   			height: 100%;
-  			background-color: #F7FAFC;
+  			background-color: #555753;
   			background-image: url('');
   			background-size: cover;
   			background-position: 50% 50%;
@@ -65,7 +65,7 @@
 			width: 160px;
 			height: 74px;
 			margin: 0 auto;
-			background: url('../images/logo1.png') no-repeat;
+			background: url('images/logo1.png') no-repeat;
 			background-size: contain;
 		}
 		.cent-box-header .sub-title{
@@ -83,7 +83,7 @@
 		}
 		.form .group{
 			padding: 1px 0;
-    		border: 1px solid #d5d5d5;
+    		border: 1px solid #555753;
     		border-radius: 3px;
 		}
 		.form .group .group-ipt{
@@ -98,7 +98,7 @@
     		border: 0;
     		border-radius: 0;
     		box-shadow: none;
-    		background: rgba(255,255,255,0.5);
+    		background: rgba(255,255,255,0.5，20);
     		font-family: 'Helvetica';
     		color: #666;
     		position: relative;
@@ -116,7 +116,7 @@
 		}
 		#button{
 			width: 100%;
-			background: #0f88eb;
+			background: #729fcf;
     		box-shadow: none;
     		border: 0;
     		border-radius: 3px;

@@ -9,25 +9,6 @@
 	],
 "creatorBuild": "25704",
 "files": {
-	"\/.style.scss.swp": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/.style.scss.swp",
-		"oF": 0
-		},
-	"\/style.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/style.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		}
 	},
 "hooks": [
 	],
