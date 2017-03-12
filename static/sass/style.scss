@@ -72,9 +72,9 @@ body{
 {
     color:$black;
     position:fixed;
-    bottom:-26vh;
+    bottom:-230;
     width:100%;
-    height:30vh;
+    height:250px;
     background-color:$niceGrey;
     -webkit-transition-duration:0.1s;
     cursor:pointer;
@@ -84,9 +84,15 @@ body{
     &:active {
         background-color:$darkGrey;
     }
-    center{ 
+    center{
         // border-bottom:$darkGrey 1px solid;
-        i{ -webkit-transition-duration: 0.2s; } 
+        i{
+            -webkit-transition-duration: 0.2s;
+        }
+    }
+    .container
+    {
+        width:200px;
     }
 }
 

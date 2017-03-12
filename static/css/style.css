@@ -46,9 +46,9 @@ body {
 #footer {
   color: black;
   position: fixed;
-  bottom: -26vh;
+  bottom: -230;
   width: 100%;
-  height: 30vh;
+  height: 250px;
   background-color: #d3d7cf;
   -webkit-transition-duration: 0.1s;
   cursor: pointer; }
@@ -56,6 +56,10 @@ body {
     background-color: white; }
   #footer:active {
     background-color: #555753; }
+  #footer center i {
+    -webkit-transition-duration: 0.2s; }
+  #footer .container {
+    width: 200px; }
 
 iframe {
   margin-left: 20%;
