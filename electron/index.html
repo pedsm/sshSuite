@@ -20,6 +20,7 @@ const gritty = require('gritty'),
       socket = io.listen(server),
       port = 3000,
       ip = '0.0.0.0'
+      config = require('./config.json')
 
 termApp.use(gritty())
     termApp.use(express.static('static'))
@@ -53,6 +54,7 @@ function getPath()
 }
 function changeDir(path) 
 { 
+    document.getElementById('browser').innerHTML = "<center><i class='material-icons spin'>autorenew</i></center>"
     document.getElementById('iframe').contentWindow.emulator.terminal.send('cd ' +path + "\r")
 }
 function drawLs(path)

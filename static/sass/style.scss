@@ -26,7 +26,14 @@ body{
     width: 20%;
     float: left;
     height: 100vh;
-    background-color: $grey;
+    background-color: $cyan;
+    .spin
+    {
+        color:$white;
+        margin:20px;
+        font-size:40px;
+        -webkit-animation: spin 1s infinite linear;
+    }
     .item
     {
         padding-left:10px;
@@ -37,6 +44,7 @@ body{
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        -webkit-transition-duration:0.1s;
         i{
             padding-left:10px;
         }
@@ -44,6 +52,12 @@ body{
             bottom: 6px;
             font-size: 12px;
             position: relative;
+        }
+        &:hover{
+            background-color:$cyan2;
+        }
+        &:active{
+            background-color:$darkGrey;
         }
     }
 }
@@ -60,4 +74,8 @@ iframe{
     height:100vh;
     display:block;
     oveflow:hidden;
+}
+@-webkit-keyframes spin {
+    0%   {-webkit-transform: rotate(0deg)}
+    100% {-webkit-transform: rotate(360deg)}
 }

@@ -10,7 +10,12 @@ body {
   width: 20%;
   float: left;
   height: 100vh;
-  background-color: #2e3436; }
+  background-color: #3465a4; }
+  #browser .spin {
+    color: white;
+    margin: 20px;
+    font-size: 40px;
+    -webkit-animation: spin 1s infinite linear; }
   #browser .item {
     padding-left: 10px;
     color: white;
@@ -19,13 +24,18 @@ body {
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; }
+    text-overflow: ellipsis;
+    -webkit-transition-duration: 0.1s; }
     #browser .item i {
       padding-left: 10px; }
     #browser .item span {
       bottom: 6px;
       font-size: 12px;
       position: relative; }
+    #browser .item:hover {
+      background-color: #729fcf; }
+    #browser .item:active {
+      background-color: #555753; }
 
 .gritty {
   height: 100%; }
@@ -38,5 +48,11 @@ iframe {
   height: 100vh;
   display: block;
   oveflow: hidden; }
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
 
 /*# sourceMappingURL=style.css.map */
