@@ -84,6 +84,10 @@ body{
     &:active {
         background-color:$darkGrey;
     }
+    center{ 
+        // border-bottom:$darkGrey 1px solid;
+        i{ -webkit-transition-duration: 0.2s; } 
+    }
 }
 
 iframe{
