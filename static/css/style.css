@@ -2,8 +2,7 @@
   font-family: monospace; }
 
 body {
-  margin: 0px;
-  background-color: black; }
+  margin: 0px; }
 
 #browser {
   width: 20%;
@@ -38,5 +37,9 @@ iframe {
   height: 100vh;
   display: block;
   oveflow: hidden; }
+
+.container {
+  width: 45%;
+  margin: 15px auto; }
 
 /*# sourceMappingURL=style.css.map */

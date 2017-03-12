@@ -3,18 +3,49 @@
     <head>
         <title>Page Title</title>
         <script src="Chart.bundle.min.js"></script>
+        <link rel="stylesheet" href="/css/style.css">
     </head>
     <body>
         <div class="container">
             <h2>Server Memory Usage (kB)</h2>
             <div>
-                <canvas id="myChart"></canvas>
+                <canvas id="doughnut"></canvas>
             </div>
             <script src="doughnut.js"></script>
             <script>
             var array = [300,1000];
-            makeMemChart(array);
+            var doughnut = makeMemChart(array);
+            var a, b;
+            setInterval(function(){ 
+            a = Math.floor((Math.random() * 100) + 1);
+            b = Math.floor((Math.random() * 100) + 1);
+            array = [a,b];
+            doughnut.data.datasets[0].data = array;
+            doughnut.update();
+            }, 3000);
             </script>
+        </div>
+
+        <div class="container">
+            <h2>CPU Usage (kB)</h2>
+            <div>
+                <canvas id="lineGraph"></canvas>
+            </div>
+            <script>
+            <!-- var cpu = [52,32,45,65]; -->
+            <!-- var index = [1,2,3,4] -->
+            <!-- var lineChart = makeCpuChart(cpu,index); -->
+            <!-- var c = 10; -->
+            <!-- setInterval(function(){ --> 
+            <!-- console.log(cpu) -->
+            <!-- c = Math.floor((Math.random() * 100) + 1); -->
+            <!-- lineChart.data.datasets[0].data.push(c); -->
+            <!-- lineChart.data.datasets[0].data = cpu; -->
+            <!-- lineChart.update(); -->
+            <!-- }, 3000); -->
+            displayLineChart();
+            </script>
+        </div>
         </div>
     </body>
 </html>

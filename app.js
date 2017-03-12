@@ -28,10 +28,13 @@ function sshExec(command, callback)
         })
 }
 
-setInterval(()=>{sshExec('cat /proc/meminfo',cutMem)},1000)
+setInterval(()=>{sshExec('cat /proc/meminfo',cutMem)},10000)
+setInterval(()=>{sshExec('ps -eo pcpu',cpuAvg)},1000)
+
 function cutMem(input)
 {
     var res = input.split("\n", 3)
+    res.map((ob)=>parseInt(ob))
     newRes = []
     res.forEach((line,index)=>
         {
@@ -42,5 +45,22 @@ function cutMem(input)
     var memUsed = memTotal - memFree;
     console.log("Memory used is " + memUsed);
     console.log("Memory free is " + memFree);
+
+}
+
+function cpuAvg(input)
+{
+    var counter = 0;
+    var res = input.split("\n")
+    res[0] = 0;
+    console.log("length of array is " + res.length);
+
+
+    for (var x = 0; x < res.length-1; x++) {
+        res[x] = parseFloat(res[x]);
+        counter = counter + res[x];
+    }
+
+        console.log(counter);
 
 }
