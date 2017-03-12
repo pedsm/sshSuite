@@ -45,6 +45,7 @@ body{
         overflow: hidden;
         text-overflow: ellipsis;
         -webkit-transition-duration:0.1s;
+        cursor:pointer;
         i{
             padding-left:10px;
         }
@@ -67,11 +68,28 @@ body{
         height:100vh;
     }
 }
+#footer
+{
+    color:$black;
+    position:fixed;
+    bottom:-26vh;
+    width:100%;
+    height:30vh;
+    background-color:$niceGrey;
+    -webkit-transition-duration:0.1s;
+    cursor:pointer;
+    &:hover {
+        background-color:$niceGrey + #ccc;
+    }
+    &:active {
+        background-color:$darkGrey;
+    }
+}
 
 iframe{
     margin-left:20%;
     width:80%;
-    height:100vh;
+    height:96vh;
     display:block;
     oveflow:hidden;
 }
