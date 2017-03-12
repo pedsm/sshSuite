@@ -25,10 +25,14 @@ function toggle()
     if(toggleGraphs)
     {
         document.getElementById("footer").style.bottom = "-26vh"
+        // document.getElementById("iframe").style.height = "74vh"
+        document.getElementById("arrow").style.transform = "rotate(0deg)"
     }
     else
     {
         document.getElementById("footer").style.bottom = "0vh"
+        // document.getElementById("iframe").style.height = "96vh"
+        document.getElementById("arrow").style.transform = "rotate(180deg)"
     }
     toggleGraphs = !toggleGraphs
 }

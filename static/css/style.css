@@ -56,6 +56,8 @@ body {
     background-color: white; }
   #footer:active {
     background-color: #555753; }
+  #footer center i {
+    -webkit-transition-duration: 0.2s; }
 
 iframe {
   margin-left: 20%;
