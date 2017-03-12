@@ -26,7 +26,6 @@
                 <div>
                     <canvas id="doughnut"></canvas>
                 </div>
-                <!-- <script src="doughnut.js"></script> -->
                 <script>
 var array = [300,1000];
 var doughnut = makeMemChart(array);
@@ -48,20 +47,12 @@ line = plsWork();
 setInterval(function(){
     for(var i = 0;i < myArray.length-1;i++)
     {
-    myArray[i] = myArray[i+1];
-    // myArray[1] = myArray[2];
-    // myArray[2] = myArray[3];
-    // myArray[3] = myArray[4];
-    // myArray[4] = myArray[5];
-    // myArray[5] = myArray[6];
-    // myArray[6] = myArray[7];
-    // myArray[7] = myArray[8];
-    // myArray[8] = myArray[9];
+        myArray[i] = myArray[i+1];
     }
     var y = Math.floor((Math.random() * 100) + 1); //change this to be the actual new value
     myArray[9] = cCpu;
     line.update();
-}, 500);
+}, 1000);
                 </script>
             </div>
         </div>

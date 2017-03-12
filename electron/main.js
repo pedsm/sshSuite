@@ -20,22 +20,25 @@ termApp.use(express.static(__dirname));
 gritty.listen(socket);
 server.listen(port, ip);
 
-setInterval(()=>{sshExec('cat /proc/meminfo',cutMem)},10000)
+setInterval(()=>{sshExec('cat /proc/meminfo',cutMem)},1000)
 setInterval(()=>{sshExec('ps -eo pcpu',cpuAvg)},1000)
 
+var memFree, memUsed;
 memFree = 1
 memUsed = 1
 function cutMem(input)
 {
     var res = input.split("\n", 3)
     res.map((ob)=>parseInt(ob))
+    console.log(res)
     newRes = []
     res.forEach((line,index)=>
         {
             newRes[index] = line.split(" ")
         })
-    var memTotal = newRes[0][9];
-    memFree = newRes[1][11];
+    var memTotal = newRes[0][newRes[0].length-2];
+    memFree = newRes[1][newRes[1].length-2];
+    console.log(memFree)
     memUsed = memTotal - memFree;
     console.log("Memory used is " + memUsed);
     console.log("Memory free is " + memFree);
@@ -107,8 +110,7 @@ function changeDir(path,mode)
 }
 function drawLs(path)
 {
-    //path = document.getElementById('iframe').contentWindow.emulator.terminal.title.split(":")[1]
-    //console.log(path)
+    //path = document.getElementById('iframe').contentWindow.emulator.terminal.title.split(":")[1] //console.log(path)
     sshExec('ls -g ' + '\''+path+'\'',(res)=>
         {
             var length  = res.split("\n").length;
