@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>sshSuite</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="../static/css/style.css">
+        <!-- <link rel="stylesheet" href="../node_modules/gritty/css/style.css"> -->
+        <script src="../node_modules/gritty/dist/gritty.js"></script>
+        <script src='main.js'> </script>
+        <script src='charts.js'> </script>
+    </head>
+    <body>
+        <div id="browser" onload="startLs">
+            <center>
+                <i class='material-icons spin'>autorenew</i>
+            </center>
+        </div>
+        <script>
+        document.write(' <iframe id="iframe" frameborder="no" scrolling="yes" width="90%" height="100%" src="http://localhost:3000'+window.location.search+'" seamless  ></iframe>')
+        </script>
+        <div id="footer">
+            <center onclick="toggle()">
+                <i id="arrow" class="material-icons">keyboard_arrow_up</i>
+            </center>
+            <div class="container">
+                <!-- <h2>Server Memory Usage (kB)</h2> -->
+                <div>
+                    <canvas id="doughnut"></canvas>
+                </div>
+                <script>
+    var array = [300,1000];
+    var doughnut = makeMemChart(array);
+    var a, b;
+    setInterval(function(){
+        array = [memUsed,memFree];
+        doughnut.data.datasets[0].data = array;
+        doughnut.update();
+    }, 3000);
+sshExec('cat /proc/meminfo',cutMem)
+                </script>
+            </div>
+            <div class="container">
+                <div>
+                    <canvas id="lineGraph"></canvas>
+                </div>
+                <script>
+line = plsWork();
+setInterval(function(){
+    for(var i = 0;i < myArray.length-1;i++)
+    {
+        myArray[i] = myArray[i+1];
+    }
+    var y = Math.floor((Math.random() * 100) + 1); //change this to be the actual new value
+    myArray[9] = cCpu;
+    line.update();
+}, 1000);
+                </script>
+            </div>
+        </div>
+        <script>
+setTimeout(setHandlers,1000);
+function setHandlers()
+{
+    document.getElementById('iframe').contentWindow.emulator.terminal.on('title', (title)=>
+            {
+                //console.log(title);
+                drawLs(getPath())
+            })
+}
+        </script>
+    </body>
+</html>

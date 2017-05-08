@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta author="Pedro,Huachen,Rishi">
+        <title>Welcome to SSH connect Login page</title>
+        <link rel="stylesheet" type="text/css" href="login.css">
+    </head>
+    <body>
+        <div id="box"></div>
+        <div class="cent-box">
+            <div class="cent-box-header">
+                <h1 class="main-title hide">MainLogo</h1>
+                <h2 class="sub-title">A ssh client from users for users</h2>
+            </div>
+
+            <div class="cont-main clearfix">
+
+                <form action="index.html" method="GET">
+                    <div class="login form">
+                        <div class="group">
+                            <div class="group-ipt username">
+                                <input type="text" name="username" id="username" class="ipt" placeholder="Username" required>
+                            </div>
+                            <div class="group-ipt ip">
+                                <input type="text" name="ip" id="ip" class="ipt" placeholder="IP Address" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="index.html">
+                            <button onclick="save()" class="login-btn register-btn" id="button">Login</button></a>
+                        <script>
+                            require('remote').getGlobal('sharedObject').host = document.getElementById('ip').value
+                            require('remote').getGlobal('sharedObject').user = document.getElementById('username').value
+                        </script>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Copyright (c) 2017</p>
+        </div>
+
+    </body>
+</html>
